@@ -1,4 +1,5 @@
 import { SearchIcon } from '@heroicons/react/solid';
+import GridListView from './GridListView';
 
 const SearchHeader = () => {
     return (
@@ -9,7 +10,7 @@ const SearchHeader = () => {
                 type="text"
                 placeholder="Search for any card.."
             />
-            <div className="flex-none">temp text</div>
+            <GridListView />
         </header>
     );
 };
