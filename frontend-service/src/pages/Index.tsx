@@ -1,10 +1,12 @@
-import SideMenu from '../components/SideMenu';
+import FilterMenu from '../components/FilterMenu';
+import SideMenu from '../components/NavMenu';
 
 const IndexPage = () => {
     return (
         <div className="flex">
             <SideMenu />
-            <div className="flex-1"></div>
+            <FilterMenu />
+            <div className="flex-1">Main</div>
         </div>
     );
 };
