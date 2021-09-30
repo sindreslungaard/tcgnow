@@ -1,15 +1,19 @@
 import { useState } from 'react';
+import { useRecoilState } from 'recoil';
+import { ProductViewState } from '../store';
 
 const GridListView = () => {
-    let [active, setActive] = useState<'grid' | 'list'>('grid');
+    const [productView, setProductView] = useRecoilState(ProductViewState);
+
+    //let [active, setActive] = useState<'grid' | 'list'>('grid');
 
     return (
         <div className="bg-blue-50 rounded-full p-1 flex">
             <div
-                onClick={() => setActive('grid')}
+                onClick={() => setProductView('grid')}
                 className={
                     'flex-1 flex items-center rounded-full py-1 px-3 ' +
-                    (active == 'grid'
+                    (productView == 'grid'
                         ? 'bg-white text-blue-500 cursor-default'
                         : 'cursor-pointer text-gray-500')
                 }
@@ -34,10 +38,10 @@ const GridListView = () => {
                 <span className="text-sm">Grid</span>
             </div>
             <div
-                onClick={() => setActive('list')}
+                onClick={() => setProductView('list')}
                 className={
                     'flex-1 flex items-center rounded-full py-1 px-3 ' +
-                    (active == 'list'
+                    (productView == 'list'
                         ? 'bg-white text-blue-500 cursor-default'
                         : 'cursor-pointer text-gray-500')
                 }
