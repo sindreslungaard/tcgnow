@@ -14,7 +14,7 @@ const GridListView = () => {
                 className={
                     'flex-1 flex items-center rounded-full py-1 px-3 ' +
                     (productView == 'grid'
-                        ? 'bg-white text-blue-500 cursor-default'
+                        ? 'bg-white text-blue-700 cursor-default'
                         : 'cursor-pointer text-gray-500')
                 }
             >
@@ -42,7 +42,7 @@ const GridListView = () => {
                 className={
                     'flex-1 flex items-center rounded-full py-1 px-3 ' +
                     (productView == 'list'
-                        ? 'bg-white text-blue-500 cursor-default'
+                        ? 'bg-white text-blue-700 cursor-default'
                         : 'cursor-pointer text-gray-500')
                 }
             >
