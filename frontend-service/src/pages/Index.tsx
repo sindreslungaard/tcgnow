@@ -22,7 +22,7 @@ const IndexPage = () => {
         <div className="flex">
             <SideMenu />
             <FilterMenu />
-            <main className="flex-1 p-4">
+            <main className="flex-1 overflow-y-scroll h-screen bg-gray-50">
                 <SearchHeader />
                 <ProductView />
             </main>

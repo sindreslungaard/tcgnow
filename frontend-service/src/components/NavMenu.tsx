@@ -12,7 +12,7 @@ import {
 const NavMenu = () => {
     return (
         <nav className="bg-blue-700 py-4 h-screen w-16 text-white flex flex-col items-center flex-none">
-            <div className="flex-none flex flex-col gap-8 mt-2">
+            <div className="flex-none flex flex-col gap-8">
                 <MenuIcon className="h-6 w-6 cursor-pointer" />
             </div>
 

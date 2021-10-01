@@ -1,5 +1,9 @@
 const ProductListView = () => {
-    return <div>Product list view</div>;
+    return (
+        <div className="m-4">
+            <span>List view not yet implemented</span>
+        </div>
+    );
 };
 
 export default ProductListView;
