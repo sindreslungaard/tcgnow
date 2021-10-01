@@ -1,0 +1,15 @@
+gateway:
+    port: 8080
+    services:
+        - frontend:
+            endpoint: '/'
+            host: '127.0.0.1:3000'
+        - api:
+            endpoint: '/api/v1'
+            host: '127.0.0.1:3001'
+        - chat:
+            endpoint: '/api/v1/chat'
+            host: '127.0.0.1:3002'
+        - filestore:
+            endpoint: '/api/v1/filestore'
+            host: '127.0.0.1:3003'
