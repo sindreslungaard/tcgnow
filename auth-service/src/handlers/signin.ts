@@ -1,6 +1,7 @@
 import { Request, Response } from 'express';
-import UserModel from '../models/user';
+import { UserModel } from '../models/user';
 import bcrypt from 'bcryptjs';
+import { signedUserToken } from '../auth';
 
 const signin = async (req: Request, res: Response) => {
     if (!req.body.username || !req.body.password) {
@@ -37,7 +38,14 @@ const signin = async (req: Request, res: Response) => {
         });
     }
 
-    // everything ok, sign in
+    // everything ok, return auth token
+
+    const token = signedUserToken(user);
+
+    return res.json({
+        code: 200,
+        token,
+    });
 };
 
 export { signin };
