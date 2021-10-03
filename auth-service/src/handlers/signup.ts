@@ -49,6 +49,8 @@ const signup = async (req: Request, res: Response) => {
         email: req.body.email.toLowerCase(),
         pw_hash: hash,
         created: Math.floor(Date.now() / 1000),
+        activated: false,
+        suspended: false,
     });
 
     try {
