@@ -5,6 +5,7 @@ import express from 'express';
 import { Request, Response, NextFunction } from 'express';
 import { connect } from './db';
 import { signup } from './handlers/signup';
+import { signin } from './handlers/signin';
 
 const run = async () => {
     if (!process.env.secret) {
@@ -32,6 +33,7 @@ const run = async () => {
     // routes
     app.get('/', (req, res) => res.json({ service: 'auth-service' }));
     app.post('/signup', signup);
+    app.post('/signin', signin);
 
     console.log('Listening on port', process.env.port || 3001);
     app.listen(process.env.port || 3001);
