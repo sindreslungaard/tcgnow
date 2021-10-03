@@ -8,6 +8,7 @@ interface User {
     created: number;
     activated: boolean;
     suspended: boolean;
+    activation_code?: string;
 }
 
 const schema = new Schema<User>({
@@ -18,6 +19,7 @@ const schema = new Schema<User>({
     created: { type: Number, required: true },
     activated: { type: Boolean, required: true },
     suspended: { type: Boolean, required: true },
+    activation_code: { type: String, required: false },
 });
 
 const UserModel = model<User>('User', schema);

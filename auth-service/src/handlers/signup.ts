@@ -2,6 +2,8 @@ import { Request, Response } from 'express';
 import { UserModel } from '../models/user';
 import validator from 'validator';
 import bcrypt from 'bcryptjs';
+import crypto from 'crypto';
+import { serviceCall } from '../serivecall';
 
 const signup = async (req: Request, res: Response) => {
     const emailOk = validator.isEmail(req.body.email || '');
@@ -51,6 +53,7 @@ const signup = async (req: Request, res: Response) => {
         created: Math.floor(Date.now() / 1000),
         activated: false,
         suspended: false,
+        activation_code: crypto.randomBytes(128).toString('hex'),
     });
 
     try {
@@ -62,7 +65,24 @@ const signup = async (req: Request, res: Response) => {
         });
     }
 
-    res.status(200).json({ code: 200, user });
+    try {
+        await serviceCall('POST', '/notifications/email', {
+            address: user.email,
+            content: `${process.env.host}/verify-email?code=${user.activation_code}`,
+        });
+
+        res.json({
+            code: 200,
+            message:
+                'User created successfully, check your email for activation link',
+        });
+    } catch (err) {
+        console.error(err);
+        res.status(500).json({
+            code: 500,
+            error: 'Failed to send activation link to email',
+        });
+    }
 };
 
 export { signup };
